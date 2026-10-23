@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#102d38">
     <title>THE LAST DROP | charity: water</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -79,17 +82,41 @@
             <!-- Announced area for future game feedback -->
             <p id="game-message" class="game-message" aria-live="polite">Press Start when you're ready. Every drop matters.</p>
 
-            <!-- Game controls are visual only in this prototype step -->
+            <section class="milestone-panel" aria-label="Impact milestone">
+                <span class="milestone-label">IMPACT MILESTONE</span>
+                <p id="milestone-message" aria-live="polite">Milestones will appear here as you make an impact.</p>
+            </section>
+
+            <!-- Difficulty selection and game controls -->
             <div class="game-controls">
+                <section class="difficulty-selector" aria-labelledby="difficulty-title">
+                    <h2 id="difficulty-title">SELECT DIFFICULTY</h2>
+                    <div class="difficulty-options" role="group" aria-label="Select game difficulty">
+                        <button id="easy-button" class="difficulty-button" type="button" aria-pressed="false">EASY</button>
+                        <button id="normal-button" class="difficulty-button selected" type="button" aria-pressed="true">NORMAL</button>
+                        <button id="hard-button" class="difficulty-button" type="button" aria-pressed="false">HARD</button>
+                    </div>
+                    <p id="difficulty-info" class="difficulty-info">Normal: 45 sec · 2 water per rescue · -1 contamination penalty</p>
+                </section>
                 <button id="start-button" class="button button-primary" type="button">Start game</button>
                 <button id="reset-button" class="button button-secondary" type="button">Reset game</button>
+                <button id="sound-button" class="button button-secondary sound-button" type="button" aria-pressed="true">SOUND: ON</button>
             </div>
         </section>
     </main>
 
-    <!-- Mission statement footer -->
-    <footer class="site-footer">
-        <p>Inspired by charity: water's mission to bring clean and safe water to people around the world.</p>
+    <!-- charity: water call to action -->
+    <footer class="site-footer" aria-labelledby="footer-title">
+        <div class="footer-inner">
+            <div class="footer-copy">
+                <h2 id="footer-title">EVERY DROP CAN MAKE A DIFFERENCE</h2>
+                <p>THE LAST DROP is inspired by charity: water's mission to bring clean and safe water to people around the world. Learn more about the global water crisis and how you can help.</p>
+            </div>
+            <div class="footer-actions">
+                <a class="footer-link footer-link-secondary" href="https://www.charitywater.org/" target="_blank" rel="noopener noreferrer">Learn About charity: water</a>
+                <a class="footer-link footer-link-primary" href="https://www.charitywater.org/donate" target="_blank" rel="noopener noreferrer">Donate to Clean Water</a>
+            </div>
+        </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <script src="script.js"></script>

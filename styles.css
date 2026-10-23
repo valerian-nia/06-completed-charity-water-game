@@ -26,6 +26,8 @@ Secondary Colors:
 	--color-panel-light: #1d4752;
 	--color-text: #f4f7f4;
 	--color-muted: #c0d0ce;
+	--font-display: "Oswald", "Arial Narrow", sans-serif;
+	--font-body: "Inter", "Segoe UI", sans-serif;
 	--content-width: 1120px;
 }
 
@@ -39,7 +41,7 @@ body {
 	margin: 0;
 	background: linear-gradient(135deg, #153943 0%, var(--color-deep) 68%);
 	color: var(--color-text);
-	font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+	font-family: var(--font-body);
 	line-height: 1.5;
 }
 
@@ -79,6 +81,7 @@ body {
 
 .game-heading .eyebrow,
 .section-label {
+	font-family: var(--font-display);
 	margin: 0 0 3px;
 	color: var(--color-teal);
 	font-size: 0.72rem;
@@ -88,6 +91,7 @@ body {
 }
 
 .game-heading h1 {
+	font-family: var(--font-display);
 	margin: 0;
 	color: var(--color-yellow);
 	font-size: clamp(1.65rem, 4vw, 2.35rem);
@@ -137,6 +141,7 @@ body {
 }
 
 .stat-label {
+	font-family: var(--font-display);
 	color: var(--color-muted);
 	font-size: 0.76rem;
 	font-weight: 700;
@@ -176,7 +181,10 @@ body {
 }
 
 .mission-panel h2,
-.progress-panel h2 {
+.progress-panel h2,
+.difficulty-selector h2,
+.site-footer h2 {
+	font-family: var(--font-display);
 	margin: 0;
 	font-size: 0.92rem;
 	letter-spacing: 0.08em;
@@ -294,7 +302,7 @@ body {
 	height: auto;
 	cursor: pointer;
 	filter: drop-shadow(0 8px 7px rgba(0, 0, 0, 0.32));
-	transition: transform 160ms ease, filter 160ms ease;
+	transition: opacity 250ms ease, transform 250ms ease, filter 160ms ease;
 }
 
 .game-object:hover,
@@ -319,7 +327,7 @@ body {
 	font-size: 2rem;
 	line-height: 1;
 	cursor: pointer;
-	transition: transform 160ms ease, box-shadow 160ms ease;
+	transition: opacity 300ms ease, transform 300ms ease, box-shadow 160ms ease;
 }
 
 .animal-marker:hover,
@@ -348,7 +356,7 @@ body {
 	font-size: 2rem;
 	line-height: 1;
 	box-shadow: 0 0 12px rgba(245, 64, 44, 0.3);
-	transition: transform 160ms ease, box-shadow 160ms ease;
+	transition: opacity 250ms ease, transform 250ms ease, box-shadow 160ms ease;
 }
 
 .contaminated-water-object:hover,
@@ -357,6 +365,15 @@ body {
 	box-shadow: 0 0 16px rgba(245, 64, 44, 0.72);
 	outline: 3px solid #ff902a;
 	outline-offset: 4px;
+}
+
+/* Fade interactive objects briefly after a successful action. */
+.game-object.collected,
+.contaminated-water-object.hit-obstacle,
+.animal-marker.rescued {
+	opacity: 0;
+	transform: scale(0.2);
+	pointer-events: none;
 }
 
 /* Message and game controls */
@@ -368,12 +385,114 @@ body {
 	text-align: center;
 }
 
+.milestone-panel {
+	display: flex;
+	align-items: baseline;
+	gap: 10px;
+	width: min(640px, calc(100% - 44px));
+	margin: 0 auto 4px;
+	padding: 8px 12px;
+	border: 1px solid rgba(255, 201, 7, 0.3);
+	border-left: 3px solid var(--color-yellow);
+	background-color: rgba(255, 201, 7, 0.06);
+}
+
+.milestone-label {
+	flex: 0 0 auto;
+	color: var(--color-yellow);
+	font-family: var(--font-display);
+	font-size: 0.68rem;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+}
+
+.milestone-panel p {
+	margin: 0;
+	color: var(--color-muted);
+	font-size: 0.8rem;
+}
+
 .game-controls {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	gap: 12px;
 	padding: 12px 20px 22px;
+}
+
+.difficulty-selector {
+	flex: 1 0 100%;
+	text-align: center;
+}
+
+.difficulty-selector h2 {
+	margin: 0 0 9px;
+	color: var(--color-teal);
+	font-size: 0.72rem;
+	letter-spacing: 0.12em;
+}
+
+.difficulty-options {
+	display: flex;
+	justify-content: center;
+	gap: 8px;
+}
+
+.difficulty-button {
+	min-width: 0;
+	flex: 1;
+	min-height: 38px;
+	padding: 7px 8px;
+	border: 2px solid #78a6ad;
+	border-radius: 4px;
+	background-color: #183c47;
+	color: var(--color-text);
+	cursor: pointer;
+	font: inherit;
+	font-family: var(--font-display);
+	font-size: 0.76rem;
+	font-weight: 800;
+	letter-spacing: 0.06em;
+	transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease, opacity 160ms ease;
+}
+
+.difficulty-button:hover:not(:disabled) {
+	border-color: var(--color-blue);
+	background-color: #245363;
+}
+
+.difficulty-button.selected {
+	border-color: var(--color-blue);
+	background-color: var(--color-yellow);
+	box-shadow: inset 0 -3px 0 var(--color-blue);
+	color: #172d32;
+}
+
+.difficulty-button:focus-visible {
+	outline: 3px solid var(--color-blue);
+	outline-offset: 3px;
+}
+
+.difficulty-button:disabled {
+	border-color: #627d82;
+	background-color: #30484e;
+	color: #c0d0ce;
+	cursor: not-allowed;
+	opacity: 0.72;
+}
+
+.difficulty-button.selected:disabled {
+	border-color: var(--color-blue);
+	background-color: var(--color-yellow);
+	box-shadow: inset 0 -3px 0 var(--color-blue);
+	color: #172d32;
+	opacity: 0.85;
+}
+
+.difficulty-info {
+	margin: 8px 0 0;
+	color: var(--color-muted);
+	font-size: 0.82rem;
 }
 
 .button {
@@ -384,6 +503,7 @@ body {
 	border-radius: 4px;
 	cursor: pointer;
 	font: inherit;
+	font-family: var(--font-display);
 	font-size: 0.88rem;
 	font-weight: 800;
 	letter-spacing: 0.06em;
@@ -412,22 +532,102 @@ body {
 	background-color: rgba(139, 209, 203, 0.12);
 }
 
+.sound-button {
+	min-width: 118px;
+	min-height: 44px;
+	padding: 9px 14px;
+	font-size: 0.76rem;
+}
+
 .button:focus-visible {
 	outline: 3px solid var(--color-blue);
 	outline-offset: 3px;
 }
 
-/* Small, quiet mission footer */
+/* charity: water call to action */
 .site-footer {
 	width: min(var(--content-width), calc(100% - 48px));
 	margin: 0 auto 24px;
-	color: #c0d0ce;
-	font-size: 0.78rem;
-	text-align: center;
+	padding: 20px 24px;
+	border: 1px solid rgba(139, 209, 203, 0.24);
+	border-top: 3px solid var(--color-yellow);
+	border-radius: 6px;
+	background-color: rgba(10, 32, 42, 0.82);
 }
 
-.site-footer p {
+.footer-inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 24px;
+}
+
+.footer-copy {
+	max-width: 660px;
+}
+
+.site-footer h2 {
+	margin-bottom: 5px;
+	color: var(--color-yellow);
+	font-size: 1.05rem;
+	letter-spacing: 0.06em;
+}
+
+.footer-copy p {
 	margin: 0;
+	color: var(--color-muted);
+	font-size: 0.86rem;
+}
+
+.footer-actions {
+	display: flex;
+	flex: 0 0 auto;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	gap: 9px;
+}
+
+.footer-link {
+	display: inline-flex;
+	min-height: 46px;
+	align-items: center;
+	justify-content: center;
+	padding: 10px 14px;
+	border: 2px solid transparent;
+	border-radius: 4px;
+	font-family: var(--font-display);
+	font-size: 0.82rem;
+	font-weight: 600;
+	line-height: 1.2;
+	text-align: center;
+	text-decoration: none;
+	transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.footer-link-primary {
+	background-color: var(--color-yellow);
+	color: #172d32;
+}
+
+.footer-link-primary:hover {
+	background-color: #ffda4d;
+	transform: translateY(-1px);
+}
+
+.footer-link-secondary {
+	border-color: var(--color-teal);
+	background-color: transparent;
+	color: var(--color-text);
+}
+
+.footer-link-secondary:hover {
+	border-color: var(--color-blue);
+	background-color: rgba(46, 157, 247, 0.16);
+}
+
+.footer-link:focus-visible {
+	outline: 3px solid var(--color-blue);
+	outline-offset: 3px;
 }
 
 @media (max-width: 900px) {
@@ -468,6 +668,24 @@ body {
 		width: calc(100% - 32px);
 	}
 
+	.site-footer {
+		padding: 18px 16px;
+	}
+
+	.footer-inner {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 14px;
+	}
+
+	.footer-actions {
+		justify-content: stretch;
+	}
+
+	.footer-link {
+		flex: 1 1 100%;
+	}
+
 	.page-content {
 		margin-top: 18px;
 	}
@@ -490,6 +708,12 @@ body {
 		flex-direction: column;
 		gap: 12px;
 		padding: 16px;
+	}
+
+	.milestone-panel {
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 2px;
 	}
 
 	.game-area {
@@ -545,5 +769,10 @@ body {
 
 	.button {
 		width: 100%;
+	}
+
+	.sound-button {
+		width: auto;
+		align-self: center;
 	}
 }
