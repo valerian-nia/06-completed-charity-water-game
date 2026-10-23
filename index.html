@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#102d38">
+    <title>THE LAST DROP | charity: water</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Brand header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="brand" href="#main-content" aria-label="charity: water - THE LAST DROP">
+                <img src="img/cw_logo_horizontal.png" alt="charity: water">
+            </a>
+            <div class="game-heading">
+                <p class="eyebrow">A clean water survival game</p>
+                <h1>THE LAST DROP</h1>
+                <p class="tagline">Every drop is a choice.</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main game interface -->
+    <main id="main-content" class="page-content">
+        <section class="game-shell" aria-label="THE LAST DROP game">
+            <!-- Current game stats -->
+            <div class="hud" aria-label="Game stats">
+                <div class="stat">
+                    <span class="stat-label">Score</span>
+                    <strong id="score" class="stat-value">0</strong>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Clean water</span>
+                    <strong id="water-count" class="stat-value">0</strong>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Animals rescued</span>
+                    <strong class="stat-value"><span id="animals-rescued">0</span><span class="stat-total"> / 3</span></strong>
+                </div>
+                <div class="stat stat-time">
+                    <span class="stat-label">Time</span>
+                    <strong class="stat-value"><span id="timer">45</span><span class="stat-unit"> sec</span></strong>
+                </div>
+            </div>
+
+            <!-- Mission and Safe Haven progress -->
+            <div class="mission-row">
+                <section class="mission-panel" aria-labelledby="mission-title">
+                    <p class="section-label">Your objective</p>
+                    <h2 id="mission-title">Mission</h2>
+                    <p>Collect clean water, avoid contamination, and rescue 3 stranded animals before time runs out.</p>
+                </section>
+
+                <section class="progress-panel" aria-labelledby="progress-title">
+                    <div class="progress-heading">
+                        <h2 id="progress-title">Safe Haven progress</h2>
+                        <span id="progress-text" class="progress-value">0%</span>
+                    </div>
+                    <div class="progress-track" role="progressbar" aria-label="Safe Haven progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                        <div id="safe-haven-progress" class="progress-fill"></div>
+                    </div>
+                    <p class="progress-note">Every clean drop helps rebuild a safer home.</p>
+                </section>
+            </div>
+
+            <!-- CSS-only flooded town scene and temporary object previews -->
+            <section id="game-area" class="game-area" aria-label="Flooded town game area">
+                <div class="scene-skyline" aria-hidden="true"></div>
+                <div class="scene-water" aria-hidden="true"></div>
+                <div class="scene-horizon-label" aria-hidden="true">LOWER WATERS · SAFE HAVEN AHEAD</div>
+                <img id="clean-water-object" class="game-object preview-can" src="img/water-can-transparent.png" alt="Yellow jerry can with clean water to collect" role="button" aria-label="Collect clean water" tabindex="0">
+                <span id="animal-object" class="animal-marker" role="button" aria-label="Rescue the stranded dog" tabindex="0">🐕</span>
+                <button id="contaminated-water-object" class="contaminated-water-object" type="button" aria-label="Avoid contaminated water">☣️</button>
+                <span class="scene-location" aria-hidden="true">RIVER STREET</span>
+            </section>
+
+            <!-- Announced area for future game feedback -->
+            <p id="game-message" class="game-message" aria-live="polite">Press Start when you're ready. Every drop matters.</p>
+
+            <!-- Game controls are visual only in this prototype step -->
+            <div class="game-controls">
+                <button id="start-button" class="button button-primary" type="button">Start game</button>
+                <button id="reset-button" class="button button-secondary" type="button">Reset game</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Mission statement footer -->
+    <footer class="site-footer">
+        <p>Inspired by charity: water's mission to bring clean and safe water to people around the world.</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

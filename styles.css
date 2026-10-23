@@ -1,0 +1,549 @@
+/* Charity: water Brand Colors
+
+Primary Colors:
+- Yellow:     #FFC907
+- Blue:       #2E9DF7
+
+Secondary Colors:
+- Light Blue: #8BD1CB
+- Green:      #4FCB53
+- Orange:     #FF902A
+- Red:        #F5402C
+- Dark Green: #159A48
+- Pink:       #F16061
+
+*/
+
+/* Colors and shared page settings */
+:root {
+	color-scheme: dark;
+	--color-yellow: #FFC907;
+	--color-blue: #2E9DF7;
+	--color-teal: #8BD1CB;
+	--color-ink: #102d38;
+	--color-deep: #0a202a;
+	--color-panel: #163944;
+	--color-panel-light: #1d4752;
+	--color-text: #f4f7f4;
+	--color-muted: #c0d0ce;
+	--content-width: 1120px;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	min-width: 320px;
+	min-height: 100vh;
+	margin: 0;
+	background: linear-gradient(135deg, #153943 0%, var(--color-deep) 68%);
+	color: var(--color-text);
+	font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+	line-height: 1.5;
+}
+
+/* Brand header */
+.site-header {
+	border-bottom: 1px solid rgba(139, 209, 203, 0.22);
+	background-color: rgba(8, 29, 37, 0.72);
+}
+
+.header-inner {
+	display: flex;
+	align-items: center;
+	gap: 30px;
+	width: min(var(--content-width), calc(100% - 48px));
+	min-height: 126px;
+	margin: 0 auto;
+	padding: 20px 0;
+}
+
+.brand {
+	display: flex;
+	flex: 0 0 220px;
+	align-items: center;
+	padding-right: 28px;
+	border-right: 1px solid rgba(139, 209, 203, 0.28);
+}
+
+.brand img {
+	display: block;
+	width: 100%;
+	max-width: 190px;
+	height: auto;
+	padding: 9px;
+	border-radius: 2px;
+	background-color: #fff;
+}
+
+.game-heading .eyebrow,
+.section-label {
+	margin: 0 0 3px;
+	color: var(--color-teal);
+	font-size: 0.72rem;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+}
+
+.game-heading h1 {
+	margin: 0;
+	color: var(--color-yellow);
+	font-size: clamp(1.65rem, 4vw, 2.35rem);
+	line-height: 1.1;
+}
+
+.tagline {
+	margin: 5px 0 0;
+	color: var(--color-text);
+	font-size: 0.96rem;
+}
+
+/* Game layout and score HUD */
+.page-content {
+	width: min(var(--content-width), calc(100% - 48px));
+	margin: 28px auto 36px;
+}
+
+.game-shell {
+	overflow: hidden;
+	border: 1px solid rgba(139, 209, 203, 0.2);
+	border-radius: 8px;
+	background-color: rgba(10, 32, 42, 0.78);
+	box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+}
+
+.hud {
+	display: flex;
+	flex-wrap: wrap;
+	border-bottom: 1px solid rgba(139, 209, 203, 0.18);
+	background-color: #183c47;
+}
+
+.stat {
+	display: flex;
+	flex: 1 1 180px;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	min-height: 76px;
+	padding: 14px 22px;
+	border-right: 1px solid rgba(139, 209, 203, 0.15);
+}
+
+.stat:last-child {
+	border-right: 0;
+}
+
+.stat-label {
+	color: var(--color-muted);
+	font-size: 0.76rem;
+	font-weight: 700;
+	letter-spacing: 0.07em;
+	text-transform: uppercase;
+}
+
+.stat-value {
+	color: var(--color-yellow);
+	font-size: 1.55rem;
+	font-variant-numeric: tabular-nums;
+	line-height: 1;
+	white-space: nowrap;
+}
+
+.stat-total,
+.stat-unit {
+	color: var(--color-text);
+	font-size: 0.9rem;
+	font-weight: 500;
+}
+
+/* Mission and Safe Haven progress */
+.mission-row {
+	display: flex;
+	gap: 18px;
+	padding: 20px 22px;
+}
+
+.mission-panel,
+.progress-panel {
+	flex: 1 1 0;
+	min-width: 0;
+	padding: 18px 20px;
+	border-left: 3px solid var(--color-blue);
+	background-color: var(--color-panel);
+}
+
+.mission-panel h2,
+.progress-panel h2 {
+	margin: 0;
+	font-size: 0.92rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.mission-panel > p:last-child,
+.progress-note {
+	margin: 8px 0 0;
+	color: var(--color-muted);
+	font-size: 0.9rem;
+}
+
+.progress-panel {
+	border-left-color: var(--color-yellow);
+}
+
+.progress-heading {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.progress-value {
+	color: var(--color-yellow);
+	font-size: 1rem;
+	font-weight: 700;
+	font-variant-numeric: tabular-nums;
+}
+
+.progress-track {
+	height: 12px;
+	margin-top: 13px;
+	overflow: hidden;
+	border: 1px solid #709397;
+	border-radius: 2px;
+	background-color: #102b34;
+}
+
+.progress-fill {
+	width: 0%;
+	height: 100%;
+	background-color: var(--color-yellow);
+	transition: width 300ms ease;
+}
+
+/* CSS-only flooded town play area */
+.game-area {
+	position: relative;
+	min-height: 390px;
+	overflow: hidden;
+	isolation: isolate;
+	border-top: 1px solid rgba(139, 209, 203, 0.22);
+	border-bottom: 1px solid rgba(139, 209, 203, 0.22);
+	background-color: #244b56;
+	background-image:
+		repeating-linear-gradient(107deg, transparent 0 37px, rgba(210, 235, 235, 0.12) 38px, transparent 39px 76px),
+		linear-gradient(180deg, #294b56 0%, #355b61 52%, #276071 100%);
+}
+
+.scene-skyline {
+	position: absolute;
+	z-index: -1;
+	top: 36%;
+	right: 0;
+	left: 0;
+	height: 34%;
+	opacity: 0.62;
+	background:
+		linear-gradient(to top, #193a43 0 68%, transparent 68%) 4% 100% / 12% 100% no-repeat,
+		linear-gradient(to top, #193a43 0 100%, transparent 100%) 19% 100% / 15% 100% no-repeat,
+		linear-gradient(to top, #193a43 0 78%, transparent 78%) 39% 100% / 13% 100% no-repeat,
+		linear-gradient(to top, #193a43 0 92%, transparent 92%) 58% 100% / 16% 100% no-repeat,
+		linear-gradient(to top, #193a43 0 66%, transparent 66%) 80% 100% / 18% 100% no-repeat;
+}
+
+.scene-water {
+	position: absolute;
+	z-index: -1;
+	right: -4%;
+	bottom: -35px;
+	left: -4%;
+	height: 44%;
+	border-top: 2px solid rgba(139, 209, 203, 0.55);
+	border-radius: 50% 50% 0 0 / 12% 12% 0 0;
+	background:
+		repeating-linear-gradient(0deg, transparent 0 22px, rgba(139, 209, 203, 0.13) 23px 24px, transparent 25px 42px),
+		linear-gradient(180deg, rgba(33, 111, 125, 0.84), rgba(14, 62, 78, 0.98));
+}
+
+.scene-horizon-label,
+.scene-location {
+	position: absolute;
+	color: rgba(241, 248, 245, 0.8);
+	font-size: 0.68rem;
+	font-weight: 700;
+	letter-spacing: 0.13em;
+}
+
+.scene-horizon-label {
+	top: 18px;
+	left: 22px;
+}
+
+.scene-location {
+	right: 22px;
+	bottom: 18px;
+}
+
+.game-object {
+	position: absolute;
+	display: block;
+	width: clamp(58px, 8vw, 88px);
+	height: auto;
+	cursor: pointer;
+	filter: drop-shadow(0 8px 7px rgba(0, 0, 0, 0.32));
+	transition: transform 160ms ease, filter 160ms ease;
+}
+
+.game-object:hover,
+.game-object:focus-visible {
+	transform: scale(1.08);
+	filter: drop-shadow(0 0 10px var(--color-yellow)) drop-shadow(0 8px 7px rgba(0, 0, 0, 0.32));
+	outline: 3px solid var(--color-yellow);
+	outline-offset: 4px;
+}
+
+.animal-marker {
+	position: absolute;
+	left: 20%;
+	top: 35%;
+	display: grid;
+	width: 58px;
+	height: 58px;
+	place-items: center;
+	border: 2px solid rgba(255, 201, 7, 0.82);
+	border-radius: 50%;
+	background-color: rgba(10, 32, 42, 0.78);
+	font-size: 2rem;
+	line-height: 1;
+	cursor: pointer;
+	transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.animal-marker:hover,
+.animal-marker:focus-visible {
+	transform: scale(1.08);
+	box-shadow: 0 0 12px rgba(255, 201, 7, 0.8);
+	outline: 3px solid var(--color-yellow);
+	outline-offset: 4px;
+}
+
+.contaminated-water-object {
+	position: absolute;
+	left: 70%;
+	top: 35%;
+	display: grid;
+	width: clamp(58px, 8vw, 88px);
+	height: clamp(58px, 8vw, 88px);
+	place-items: center;
+	padding: 0;
+	border: 2px solid #ff902a;
+	border-radius: 50%;
+	background-color: rgba(73, 34, 39, 0.94);
+	color: #fff;
+	cursor: pointer;
+	font: inherit;
+	font-size: 2rem;
+	line-height: 1;
+	box-shadow: 0 0 12px rgba(245, 64, 44, 0.3);
+	transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.contaminated-water-object:hover,
+.contaminated-water-object:focus-visible {
+	transform: scale(1.08);
+	box-shadow: 0 0 16px rgba(245, 64, 44, 0.72);
+	outline: 3px solid #ff902a;
+	outline-offset: 4px;
+}
+
+/* Message and game controls */
+.game-message {
+	min-height: 52px;
+	margin: 0;
+	padding: 15px 22px 8px;
+	color: var(--color-muted);
+	text-align: center;
+}
+
+.game-controls {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 12px;
+	padding: 12px 20px 22px;
+}
+
+.button {
+	min-width: 154px;
+	min-height: 48px;
+	padding: 11px 22px;
+	border: 2px solid transparent;
+	border-radius: 4px;
+	cursor: pointer;
+	font: inherit;
+	font-size: 0.88rem;
+	font-weight: 800;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.button-primary {
+	background-color: var(--color-yellow);
+	color: #172d32;
+}
+
+.button-primary:hover {
+	background-color: #ffda4d;
+	transform: translateY(-1px);
+}
+
+.button-secondary {
+	border-color: #91b8b8;
+	background-color: transparent;
+	color: var(--color-text);
+}
+
+.button-secondary:hover {
+	border-color: var(--color-teal);
+	background-color: rgba(139, 209, 203, 0.12);
+}
+
+.button:focus-visible {
+	outline: 3px solid var(--color-blue);
+	outline-offset: 3px;
+}
+
+/* Small, quiet mission footer */
+.site-footer {
+	width: min(var(--content-width), calc(100% - 48px));
+	margin: 0 auto 24px;
+	color: #c0d0ce;
+	font-size: 0.78rem;
+	text-align: center;
+}
+
+.site-footer p {
+	margin: 0;
+}
+
+@media (max-width: 900px) {
+	.stat {
+		flex-basis: 50%;
+	}
+}
+
+/* Stack content cleanly on narrower screens */
+@media (max-width: 680px) {
+	.header-inner {
+		align-items: flex-start;
+		gap: 18px;
+		width: calc(100% - 32px);
+		min-height: 0;
+		padding: 18px 0;
+	}
+
+	.brand {
+		flex-basis: 132px;
+		padding-right: 16px;
+	}
+
+	.brand img {
+		max-width: 116px;
+	}
+
+	.game-heading .eyebrow {
+		font-size: 0.62rem;
+	}
+
+	.tagline {
+		font-size: 0.88rem;
+	}
+
+	.page-content,
+	.site-footer {
+		width: calc(100% - 32px);
+	}
+
+	.page-content {
+		margin-top: 18px;
+	}
+
+	.stat {
+		flex-basis: 50%;
+		min-height: 68px;
+		padding: 12px 16px;
+	}
+
+	.stat:nth-child(2) {
+		border-right: 0;
+	}
+
+	.stat:nth-child(-n + 2) {
+		border-bottom: 1px solid rgba(139, 209, 203, 0.15);
+	}
+
+	.mission-row {
+		flex-direction: column;
+		gap: 12px;
+		padding: 16px;
+	}
+
+	.game-area {
+		min-height: 340px;
+	}
+
+}
+
+@media (max-width: 420px) {
+	.header-inner {
+		flex-direction: column;
+		gap: 12px;
+	}
+
+	.brand {
+		flex: initial;
+		padding: 0 0 10px;
+		border-right: 0;
+		border-bottom: 1px solid rgba(139, 209, 203, 0.28);
+	}
+
+	.brand img {
+		max-width: 140px;
+	}
+
+	.stat {
+		flex-basis: 100%;
+		min-height: 58px;
+		border-right: 0;
+		border-bottom: 1px solid rgba(139, 209, 203, 0.15);
+	}
+
+	.stat:last-child {
+		border-bottom: 0;
+	}
+
+	.game-area {
+		min-height: 300px;
+	}
+
+	.scene-horizon-label {
+		left: 14px;
+		font-size: 0.6rem;
+	}
+
+	.scene-location {
+		right: 14px;
+	}
+
+	.game-controls {
+		flex-direction: column;
+	}
+
+	.button {
+		width: 100%;
+	}
+}
